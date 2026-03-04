@@ -24,6 +24,13 @@ const projects = [
     stack: "Next.js, Tailwind CSS, Framer Motion",
     link: "https://github.com/kckeshab12/Personal_Portfolio",
   },
+  {
+    title: "Service Portal",
+    description:
+      "A complete ecosystem for job placement, training services, and other digital services with multiple role-based access levels.",
+    stack: "Role-based access, service workflows, ecosystem platform",
+    link: "https://github.com/kckeshab12",
+  },
 ];
 
 export default function Project() {

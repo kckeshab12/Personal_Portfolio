@@ -23,22 +23,39 @@ export default function Dashboard() {
     {
       id: "electromart",
       title: "ElectroMart",
+      category: "Ecommerce",
       short: "An ecommerce web app for shopping electronic gadgets online.",
       full: "ElectroMart provides separate user and admin workflows for device listings, management, and practical checkout options.",
+      stack: "Next.js, Payments, Admin Panel",
       link: "https://github.com/kckeshab12/electromart",
     },
     {
       id: "servx",
       title: "ServX",
+      category: "Service Booking",
       short: "A home service booking app with map integration.",
       full: "ServX helps customers find skilled workers with location-aware service discovery and booking flows.",
+      stack: "React, Maps API, Location Logic",
+      link: "https://github.com/kckeshab12",
+    },
+    {
+      id: "service-portal",
+      title: "Service Portal",
+      category: "Ecosystem Platform",
+      short:
+        "A complete ecosystem for job placement, training services, and digital services with role-based access levels.",
+      full:
+        "Service Portal integrates job placement workflows, training service modules, and additional digital services in one platform, with different access levels for admins, partners, trainers, and users.",
+      stack: "Role-Based Access, Workflow Modules, Service Platform",
       link: "https://github.com/kckeshab12",
     },
     {
       id: "portfolio",
       title: "Personal Portfolio",
+      category: "Personal Brand",
       short: "A portfolio site focused on projects and storytelling.",
       full: "This project showcases technical experience, practical UI work, and professional highlights in a modern layout.",
+      stack: "Next.js, Tailwind CSS, Framer Motion",
       link: "https://github.com/kckeshab12/Personal_Portfolio",
     },
   ];
@@ -82,42 +99,60 @@ export default function Dashboard() {
           </p>
         </div>
 
-        <section id="projects">
-          <h3 className="mb-4 text-2xl font-bold text-slate-900">Projects</h3>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <section id="projects" className="rounded-3xl border border-slate-200 bg-white/70 p-6 shadow-sm backdrop-blur-md sm:p-8">
+          <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-cyan-700">
+                Portfolio Highlights
+              </p>
+              <h3 className="mt-1 text-2xl font-bold text-slate-900">
+                Featured Projects
+              </h3>
+            </div>
+            <p className="rounded-full border border-slate-200 bg-slate-50 px-4 py-1 text-xs font-medium text-slate-600">
+              {projects.length} Active Projects
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {projects.map((project) => (
               <div
                 key={project.id}
-                className={`flex cursor-pointer flex-col rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition ${
+                className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border bg-white p-6 shadow-sm transition duration-300 ${
                   highlightedCard === project.id
-                    ? "scale-[1.02] ring-2 ring-cyan-400"
-                    : "hover:shadow-lg"
+                    ? "scale-[1.02] border-cyan-300 ring-2 ring-cyan-300"
+                    : "border-slate-200 hover:-translate-y-1 hover:border-cyan-200 hover:shadow-xl"
                 }`}
               >
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500" />
+                <p className="mb-3 inline-flex w-fit rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-cyan-700">
+                  {project.category}
+                </p>
                 <h4 className="mb-2 text-xl font-semibold text-slate-800">
                   {project.title}
                 </h4>
                 <p className="mb-3 text-slate-600">
                   {expanded[project.id] ? project.full : project.short}
                 </p>
+                <p className="mb-4 text-xs font-medium text-indigo-700">
+                  {project.stack}
+                </p>
                 <div className="mt-auto">
                   <button
                     onClick={() => toggleExpand(project.id)}
-                    className="text-sm text-cyan-700 hover:underline"
+                    className="text-sm font-semibold text-cyan-700 transition hover:text-cyan-900"
                   >
                     {expanded[project.id] ? "Show Less" : "Show More"}
                   </button>
-                  {expanded[project.id] && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ml-4 inline-flex items-center text-cyan-700 hover:text-cyan-900"
-                    >
-                      Visit
-                      <ExternalLink size={16} className="ml-1" />
-                    </a>
-                  )}
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-4 inline-flex items-center text-sm font-semibold text-cyan-700 transition group-hover:gap-2 hover:text-cyan-900"
+                  >
+                    View Repo
+                    <ExternalLink size={16} className="ml-1" />
+                  </a>
                 </div>
               </div>
             ))}

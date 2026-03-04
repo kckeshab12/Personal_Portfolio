@@ -1,0 +1,49 @@
+✅ To rum the web application
+🔁 Option 1: Use Command Prompt (Recommended)
+Instead of PowerShell, open Command Prompt:
+
+Press Win + R, type cmd, and hit Enter
+
+Navigate to your project folder:
+
+bash
+Copy
+Edit
+cd Desktop\personal_portfolio
+Start your Next.js dev server:
+
+bash
+Copy
+Edit
+npm run dev
+✅ This avoids the PowerShell restriction entirely.
+
+🛠️ Option 2: Temporarily Allow PowerShell Scripts
+Only if you prefer PowerShell:
+
+Open PowerShell as Administrator
+
+Run:
+
+powershell
+Copy
+Edit
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+Then:
+
+bash
+Copy
+Edit
+npm run dev
+⚠️ This permission lasts only for that session.
+
+🧪 Bonus Tip: Make VS Code Terminal Use CMD by Default
+If you'd rather not deal with PowerShell at all:
+
+In VS Code, press Ctrl + Shift + P
+
+Search: Terminal: Select Default Profile
+
+Choose: Command Prompt
+
+Open a new terminal (Ctrl + backtick) → it will now use CMD
